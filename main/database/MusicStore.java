@@ -1,1 +1,5 @@
-yes
+package database;
+
+public class MusicStore {
+
+}
