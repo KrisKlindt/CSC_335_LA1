@@ -47,10 +47,14 @@ public class Album {
 	}
 
 	public ArrayList<Song> searchByTitle(String title){
-		ArrayList<Song> songs = new ArrayList<Song>();
+		ArrayList<Song> foundsongs = new ArrayList<Song>();
 		// search through each song, return all with the same title if multiple
 		// I think the comparison should ignore case, so capitalization doesn't matter
-		
-		return songs;
+		for (Song song: this.songs) {
+			if (song.getTitle().equalsIgnoreCase(title)) {
+				foundsongs.add(song);
+			}
+		}
+		return foundsongs;
 	}
 }
