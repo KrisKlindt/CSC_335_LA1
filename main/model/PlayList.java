@@ -1,11 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlayList {
 	private String title;
-    private List<Song> songs;
+    private ArrayList<Song> songs;
     
     public PlayList(String title) {
     	this.title = title;

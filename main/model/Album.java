@@ -6,11 +6,15 @@ import java.util.ArrayList;
 public class Album {
 	private String title;
 	private String artist;
+	private String year;
+	private String genre;
 	private ArrayList<Song> songs;
 
-	public Album(String title, String artist) {
+	public Album(String title, String artist, String genre, String year) {
 		this.title = title;
 		this.artist = artist;
+		this.genre = genre;
+		this.year = year;
 		this.songs = new ArrayList<>();
 	}
 
@@ -34,6 +38,8 @@ public class Album {
 	public void printAlbumDetails() {
 		System.out.println("Album: " + title);
 		System.out.println("Artist: " + artist);
+		System.out.println("Genre: " + genre);
+		System.out.println("Year: " + year);
 		System.out.println("Songs:");
 		for (Song song : songs) {
 			System.out.println(" - " + song.getTitle());
