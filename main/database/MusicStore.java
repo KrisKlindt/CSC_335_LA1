@@ -61,7 +61,7 @@ public class MusicStore {
 		}
 	}
 	
-	public void searchSongByTitle(String title) {
+	public ArrayList<Song> searchSongByTitle(String title) {
 		ArrayList<Song> songList = new ArrayList<Song>();
 		for (Album album : albums) {
 			ArrayList<Song> songs = album.searchByTitle(title);
@@ -77,9 +77,11 @@ public class MusicStore {
 				System.out.println(); // so there is a space between each song
 			}
 		}
+		
+		return songList;
 	}
 	
-	public void searchSongByArtist(String artist) {
+	public ArrayList<Song> searchSongByArtist(String artist) {
 		ArrayList<Song> songList = new ArrayList<Song>();
 		for (Album album : albums) {
 			if (album.getArtist().equalsIgnoreCase(artist)) {
@@ -97,12 +99,14 @@ public class MusicStore {
 				System.out.println(); // so there is a space between each song
 			}
 		}
+		
+		return songList;
 	}
 	
-	public void searchAlbumByTitle(String title) {
+	public ArrayList<Album> searchAlbumByTitle(String title) {
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		for (Album album : albums) {
-			if (album.getArtist().equalsIgnoreCase(title)) {
+			if (album.getTitle().equalsIgnoreCase(title)) {
 				albumList.add(album);
 			}
 		}
@@ -116,9 +120,11 @@ public class MusicStore {
 				System.out.println(); // so there is a space between each album
 			}
 		}
+		
+		return albumList;
 	}
 	
-	public void searchAlbumByArtist(String artist) {
+	public ArrayList<Album> searchAlbumByArtist(String artist) {
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		for (Album album : albums) {
 			if (album.getArtist().equalsIgnoreCase(artist)) {
@@ -135,5 +141,7 @@ public class MusicStore {
 				System.out.println(); // so there is a space between each album
 			}
 		}
+		
+		return albumList;
 	}
 }
