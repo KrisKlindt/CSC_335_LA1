@@ -23,6 +23,10 @@ public class Song {
     	return artist;
     }
     
+    public String getAlbum() {
+    	return album;
+    }
+    
     public boolean getFavorite() {
     	return favorite;
     }
@@ -46,6 +50,12 @@ public class Song {
     
     public void removeFavorite() {
     	this.favorite = false;
+    }
+    
+    public boolean equalTo(Song song2) {
+    	return (title.equalsIgnoreCase(song2.getTitle()) && 
+    			artist.equalsIgnoreCase(song2.getArtist()) && 
+    			album.equalsIgnoreCase(song2.getAlbum()));
     }
     
     public void printAllDetails() {

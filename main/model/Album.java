@@ -34,6 +34,11 @@ public class Album {
 		ArrayList<Song> alb = new ArrayList<Song>(songs);
 		return alb;
 	}
+	
+	public void printTitleAndArtist() {
+		System.out.println("Album: " + title);
+		System.out.println("Artist: " + artist);
+	}
 
 	public void printAlbumDetails() {
 		System.out.println("Album: " + title);
