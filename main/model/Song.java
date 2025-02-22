@@ -23,6 +23,10 @@ public class Song {
     	return artist;
     }
     
+    public boolean getFavorite() {
+    	return favorite;
+    }
+    
     public void rateSong() {
     	System.out.println("Please choose a rating 1 through 5.");
     	Scanner scanner = new Scanner(System.in);

@@ -61,27 +61,29 @@ public class MusicStore {
 		}
 	}
 	
-	public ArrayList<Song> searchSongByTitle(String title) {
+	public ArrayList<Song> searchSongByTitle(String title, boolean print) {
 		ArrayList<Song> songList = new ArrayList<Song>();
 		for (Album album : albums) {
 			ArrayList<Song> songs = album.searchByTitle(title);
 			songList.addAll(songs);
 		}
 		
-		if (songList.size() == 0) {
-			System.out.println("This song title is not in the music store");
-		}
-		else {
-			for (Song song: songList) {
-				song.printAllDetails();
-				System.out.println(); // so there is a space between each song
+		if (print) {
+			if (songList.size() == 0) {
+				System.out.println("This song title is not in the music store");
+			}
+			else {
+				for (Song song: songList) {
+					song.printAllDetails();
+					System.out.println(); // so there is a space between each song
+				}
 			}
 		}
 		
 		return songList;
 	}
 	
-	public ArrayList<Song> searchSongByArtist(String artist) {
+	public ArrayList<Song> searchSongByArtist(String artist, boolean print) {
 		ArrayList<Song> songList = new ArrayList<Song>();
 		for (Album album : albums) {
 			if (album.getArtist().equalsIgnoreCase(artist)) {
@@ -90,20 +92,22 @@ public class MusicStore {
 			}
 		}
 		
-		if (songList.size() == 0) {
-			System.out.println("This song artist is not in the music store");
-		}
-		else {
-			for (Song song: songList) {
-				song.printAllDetails();
-				System.out.println(); // so there is a space between each song
+		if (print) {
+			if (songList.size() == 0) {
+				System.out.println("This song artist is not in the music store");
+			}
+			else {
+				for (Song song: songList) {
+					song.printAllDetails();
+					System.out.println(); // so there is a space between each song
+				}
 			}
 		}
 		
 		return songList;
 	}
 	
-	public ArrayList<Album> searchAlbumByTitle(String title) {
+	public ArrayList<Album> searchAlbumByTitle(String title, boolean print) {
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		for (Album album : albums) {
 			if (album.getTitle().equalsIgnoreCase(title)) {
@@ -111,20 +115,22 @@ public class MusicStore {
 			}
 		}
 		
-		if (albumList.size() == 0) {
-			System.out.println("This album title is not in the music store");
-		}
-		else {
-			for (Album alb: albumList) {
-				alb.printAlbumDetails();
-				System.out.println(); // so there is a space between each album
+		if(print) {
+			if (albumList.size() == 0) {
+				System.out.println("This album title is not in the music store");
+			}
+			else {
+				for (Album alb: albumList) {
+					alb.printAlbumDetails();
+					System.out.println(); // so there is a space between each album
+				}
 			}
 		}
 		
 		return albumList;
 	}
 	
-	public ArrayList<Album> searchAlbumByArtist(String artist) {
+	public ArrayList<Album> searchAlbumByArtist(String artist, boolean print) {
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		for (Album album : albums) {
 			if (album.getArtist().equalsIgnoreCase(artist)) {
@@ -132,13 +138,15 @@ public class MusicStore {
 			}
 		}
 		
-		if (albumList.size() == 0) {
-			System.out.println("This album artist is not in the music store");
-		}
-		else {
-			for (Album alb : albums) {
-				alb.printAlbumDetails();
-				System.out.println(); // so there is a space between each album
+		if(print) {
+			if (albumList.size() == 0) {
+				System.out.println("This album artist is not in the music store");
+			}
+			else {
+				for (Album alb : albums) {
+					alb.printAlbumDetails();
+					System.out.println(); // so there is a space between each album
+				}
 			}
 		}
 		

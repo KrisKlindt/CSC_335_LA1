@@ -11,6 +11,10 @@ public class PlayList {
         this.songs = new ArrayList<>();
     }
     
+    public String getTitle() {
+    	return title;
+    }
+    
     public void addSong(Song song) {
         songs.add(song);
     }
