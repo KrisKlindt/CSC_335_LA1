@@ -15,6 +15,11 @@ public class PlayList {
     	return title;
     }
     
+    public ArrayList<Song> getPlayList() {
+    	ArrayList<Song> pl = new ArrayList<Song>(songs);
+    	return pl;
+    }
+    
     public void addSong(Song song) {
         songs.add(song);
     }

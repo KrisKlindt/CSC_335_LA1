@@ -17,7 +17,8 @@ public class MusicStore {
 		
 		// open albums.txt and create albums/songs from it
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("albums/albums.txt"));
+			String fp = "./main/database/albums/albums.txt";
+			BufferedReader in = new BufferedReader(new FileReader(fp));
 			
 			ArrayList<String[]> albs = new ArrayList<String[]>();
 			String line;
@@ -32,7 +33,7 @@ public class MusicStore {
             	String title = alb[0];
             	String artist = alb[1];
             	
-            	String filepath = "albums/" + title + "_" + artist + ".txt";
+            	String filepath = "./main/database/albums/" + title + "_" + artist + ".txt";
             	
             	BufferedReader in2 = new BufferedReader(new FileReader(filepath));
             	String lin = in2.readLine();
