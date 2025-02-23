@@ -50,7 +50,7 @@ class LibraryModelTest {
 	void testAddSongMultipleYes() {
 		String input = ("yes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
-        System.setIn(testIn);
+        	System.setIn(testIn);
 		lm.addSong("Lullaby");
 		assertTrue(lm.getSongTitles().size() == 3);
 	}
