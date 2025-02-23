@@ -72,8 +72,8 @@ class LibraryModelTest {
 	}
 	
 	@Test
-	void testSearchBySongTitleNotInStore() {
-		ArrayList<Song> songList = lm.searchSongByTitle("Not in Store");
+	void testSearchBySongTitleNotInLibrary() {
+		ArrayList<Song> songList = lm.searchSongByTitle("Not in Library");
 		assertTrue(songList.size() == 0);
 	}
 	
@@ -86,7 +86,7 @@ class LibraryModelTest {
 	}
 	
 	@Test
-	void testSearchSongByArtistNotInStore() {
+	void testSearchSongByArtistNotInLibrary() {
 		ArrayList<Song> songList = lm.searchSongByArtist("Laufey");
 		assertTrue(songList.size() == 0);
 	}
@@ -99,7 +99,7 @@ class LibraryModelTest {
 	}
 	
 	@Test
-	void testSearchAlbumByTitleNotInStore() {
+	void testSearchAlbumByTitleNotInLibrary() {
 		ArrayList<Album> albumList = lm.searchAlbumByTitle("Goddess");
 		assertTrue(albumList.size() == 0);
 	}
@@ -120,7 +120,7 @@ class LibraryModelTest {
 	}
 	
 	@Test
-	void testSearchAlbumByArtistNotInStore() {
+	void testSearchAlbumByArtistNotInLibrary() {
 		ArrayList<Album> albumList = lm.searchAlbumByArtist("Laufey");
 		assertTrue(albumList.size() == 0);
 	}
