@@ -38,5 +38,15 @@ class AlbumTest {
 		assertTrue(album1.searchByTitle("one").size() == 1);
 	}
 	
-	// Not sure what or how to test printAlbumDetails
+	@Test
+	void printTitleAndArtistTest() {
+		album1.printTitleAndArtist();
+	}
+	
+	@Test
+	void printAlbumDetailsTest() {
+		Song song4 = new Song("a", "b", "c");
+		album1.addSong(song4);
+		album1.printAlbumDetails();
+	}
 }

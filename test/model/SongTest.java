@@ -2,6 +2,8 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+
 import org.junit.jupiter.api.Test;
 
 class SongTest {
@@ -15,6 +17,76 @@ class SongTest {
 	@Test
 	void getArtistTest() {
 		assertEquals(song1.getArtist(), "Joe Biden");
+	}
+	
+	@Test
+	void getAlbumTest() {
+		assertEquals(song1.getAlbum(), "yes");
+	}
+	
+	@Test
+	void getFavoriteTest() {
+		assertFalse(song1.getFavorite());
+	}
+	
+	@Test
+	void markAsFavoriteTest() {
+		song1.markAsFavorite();
+		assertTrue(song1.getFavorite());
+	}
+	
+	@Test
+	void removeFavoriteTest() {
+		song1.markAsFavorite();
+		song1.removeFavorite();
+		assertFalse(song1.getFavorite());
+	}
+	
+	@Test
+	void equalToFalseTest() {
+		Song song2 = new Song("two", "Donald Trump", "no");
+		assertFalse(song1.equalTo(song2));
+	}
+	
+	@Test
+	void equalToTrueTest() {
+		Song song2 = new Song("one", "Joe Biden", "yes");
+		assertTrue(song1.equalTo(song2));
+	}
+	
+	@Test
+	void equalToDifferentArtistTest() {
+		Song song2 = new Song("one", "Donald Trump", "yes");
+		assertFalse(song1.equalTo(song2));
+	}
+	
+	@Test
+	void equalToDifferentAlbumTest() {
+		Song song2 = new Song("one", "Joe Biden", "no");
+		assertFalse(song1.equalTo(song2));
+	}
+	
+	@Test
+	void rateSongTest() {
+		String input = ("5");
+		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
+        	System.setIn(testIn);
+        song1.rateSong();
+        assertTrue(song1.getFavorite());
+	}
+	
+	@Test
+	void rateSongInvalidInputTest() {
+		String input = ("0\n1");
+		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
+        	System.setIn(testIn);
+        song1.rateSong();
+        assertFalse(song1.getFavorite());
+	}
+	
+	@Test
+	void printAllDetailsTest() {
+		song1.printAllDetails();
 	}
 	
 	// Not sure what or how to test for printAllDetails
