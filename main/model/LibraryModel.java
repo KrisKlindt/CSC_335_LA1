@@ -97,11 +97,8 @@ public class LibraryModel {
 	// This is only meant to be used to add songs to the library when they 
 	// are added to a PlayList or added via an album
 	private void addSong(Song song) {
-		for(Song s: songs) {
-			// If the user already added a song to the library, do not add it again
-			if(!(s.equalTo(song))) {
-				songs.add(song);
-			}
+		if (!songs.contains(song)) {
+			songs.add(song);
 		}
 	}
 	
@@ -177,7 +174,7 @@ public class LibraryModel {
 		}
 	}
 	
-	public void searchPlayList(String title) {
+	public boolean searchPlayList(String title) {
 		boolean flag = false;
 		for (PlayList p : playLists) {
 			if (p.getTitle().equalsIgnoreCase(title)) {
@@ -189,9 +186,10 @@ public class LibraryModel {
 		if (flag == false) {
 			System.out.println("There is no playlist in the library with this name");
 		}
+		return flag;
 	}
 	
-	public void addSongToPlayList(String pLTitle, String songTitle) {
+	public boolean addSongToPlayList(String pLTitle, String songTitle) {
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean flag = false;
@@ -203,14 +201,16 @@ public class LibraryModel {
 				
 				if (song.size() == 0) {
 					System.out.println("This song title is not in the music store");
-					break;
+					scanner.close();
+					return false;
 				}
 				
 				else if (song.size() == 1) {
 					p.addSong(song.get(0)); // adds to the PlayList
 					addSong(song.get(0)); // adds to the library song list, if not already in there
 					System.out.println("Song added to PlayList and library");
-					break;
+					scanner.close();
+					return true;
 				}
 				
 				else {
@@ -231,7 +231,8 @@ public class LibraryModel {
 								addSong(s); // adds to the library, if not already there
 							}
 				    		System.out.println("All songs added to the PlayList and library");
-				    		count++;
+				    		scanner.close();
+				    		return true;
 				    	}
 				    	
 				    	else if (choice.equalsIgnoreCase("no")) {
@@ -244,7 +245,8 @@ public class LibraryModel {
 				    				addSong(s); // adds to the library, if not already there
 				    				System.out.println("Song added to the Playlist and library");
 				    				f = true;
-				    				break;
+				    				scanner.close();
+				    				return true;
 				    			}
 				    		}
 				    		
@@ -252,6 +254,8 @@ public class LibraryModel {
 				    			System.out.println("None of the chosen songs were written by this artist");
 				    		}
 				    		count++;
+				    		scanner.close();
+				    		return false;
 				    	}
 				    	
 				    	else {
@@ -268,9 +272,10 @@ public class LibraryModel {
 		}
 		
 		scanner.close();
+		return false;
 	}
 	
-	public void removeSongFromPlayList(String pLTitle, String songTitle) {
+	public boolean removeSongFromPlayList(String pLTitle, String songTitle) {
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean flag = false;
@@ -282,7 +287,8 @@ public class LibraryModel {
 				
 				if (pl.size() == 0) {
 					System.out.println("This PlayList is empty");
-					break;
+					scanner.close();
+					return false;
 				}
 				
 				else {
@@ -295,6 +301,8 @@ public class LibraryModel {
 					
 					if (song.size() == 1) {
 						p.removeSong(song.get(0));
+						scanner.close();
+						return true;
 					}
 					
 					else {
@@ -315,6 +323,8 @@ public class LibraryModel {
 								}
 					    		System.out.println("All songs removed from the PlayList");
 					    		count++;
+					    		scanner.close();
+					    		return true;
 					    	}
 					    	
 					    	else if (choice.equalsIgnoreCase("no")) {
@@ -326,7 +336,8 @@ public class LibraryModel {
 					    				p.removeSong(s); // removes from the PlayList
 					    				System.out.println("Song removed from the Playlist");
 					    				f = true;
-					    				break;
+					    				scanner.close();
+					    				return true;
 					    			}
 					    		}
 					    		
@@ -334,6 +345,8 @@ public class LibraryModel {
 					    			System.out.println("None of the chosen songs were written by this artist");
 					    		}
 					    		count++;
+					    		scanner.close();
+					    		return false;
 					    	}
 					    	
 					    	else {
@@ -350,6 +363,7 @@ public class LibraryModel {
 		}
 		
 		scanner.close();
+		return false;
 	}
 	
  	public ArrayList<Song> searchSongByTitle(String title) {
@@ -495,7 +509,7 @@ public class LibraryModel {
 		return titles;
 	}
 
-	public void favoriteSong(String title) {
+	public boolean favoriteSong(String title) {
 		Scanner scanner = new Scanner(System.in);
 		ArrayList<Song> songList = new ArrayList<Song>();
 		
@@ -507,10 +521,14 @@ public class LibraryModel {
 		
 		if (songList.size() == 0) {
 			System.out.println("This song title is not in the library");
+			scanner.close();
+			return false;
 		}
 		
 		else if (songList.size() == 1){
 			songList.get(0).markAsFavorite();
+			scanner.close();
+			return true;
 		}
 		
 		else {
@@ -531,6 +549,8 @@ public class LibraryModel {
 					}
 		    		System.out.println("All songs favorited");
 		    		count++;
+		    		scanner.close();
+		    		return true;
 		    	}
 		    	
 		    	else if (choice.equalsIgnoreCase("no")) {
@@ -542,7 +562,8 @@ public class LibraryModel {
 		    				s.markAsFavorite();
 		    				System.out.println("Song favorited");
 		    				f = true;
-		    				break;
+		    				scanner.close();
+		    				return true;
 		    			}
 		    		}
 		    		
@@ -550,6 +571,8 @@ public class LibraryModel {
 		    			System.out.println("None of the chosen songs were written by this artist");
 		    		}
 		    		count++;
+		    		scanner.close();
+		    		return false;
 		    	}
 		    	
 		    	else {
@@ -558,9 +581,10 @@ public class LibraryModel {
 	    	}
 		}
 		scanner.close();
+		return false;
 	}
 	
-	public void rateSong(String title, int rating) {
+	public boolean rateSong(String title) {
 		Scanner scanner = new Scanner(System.in);
 		ArrayList<Song> songList = new ArrayList<Song>();
 		
@@ -572,10 +596,14 @@ public class LibraryModel {
 		
 		if (songList.size() == 0) {
 			System.out.println("This song title is not in the library");
+			scanner.close();
+			return false;
 		}
 		
 		else if (songList.size() == 1){
 			songList.get(0).rateSong();
+			scanner.close();
+			return true;
 		}
 		
 		else {
@@ -598,6 +626,8 @@ public class LibraryModel {
 					}
 		    		System.out.println("All songs rated");
 		    		count++;
+		    		scanner.close();
+		    		return true;
 		    	}
 		    	
 		    	else if (choice.equalsIgnoreCase("no")) {
@@ -609,7 +639,8 @@ public class LibraryModel {
 		    				s.rateSong();
 		    				System.out.println("Song rated");
 		    				f = true;
-		    				break;
+		    				scanner.close();
+		    				return true;
 		    			}
 		    		}
 		    		
@@ -617,6 +648,8 @@ public class LibraryModel {
 		    			System.out.println("None of the chosen songs were written by this artist");
 		    		}
 		    		count++;
+		    		scanner.close();
+		    		return false;
 		    	}
 		    	
 		    	else {
@@ -625,6 +658,7 @@ public class LibraryModel {
 	    	}
 		}
 		scanner.close();
+		return false;
 	}
 	
 	// These 4 methods are so that there is not a need to make a MusicStore object
