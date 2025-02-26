@@ -34,6 +34,7 @@ public class View {
 			System.out.println("Or enter a negative integer to exit");
 			
 			command = getValidIntegerInput(scanner);
+			scanner.nextLine();
 			
 			if (command < 0) {
 				break;
