@@ -469,19 +469,19 @@ class LibraryModelTest {
 	@Test
 	void testRateSongMultipleYes() {
 		initLM2();
-		String input = ("yes\n4\n4\n");
+		String input = ("yes\n4 4");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.favoriteSong("Lullaby"));
+        assertTrue(lm2.rateSong("Lullaby"));
 	}
 	
 	@Test
 	void testRateSongMultipleNo() {
 		initLM2();
-		String input = ("no\nOneRepublic\n4\n");
+		String input = ("no\nOneRepublic\n4");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.favoriteSong("Lullaby"));
+        assertTrue(lm2.rateSong("Lullaby"));
 	}
 	
 	@Test
@@ -496,7 +496,7 @@ class LibraryModelTest {
 	@Test
 	void testRateSongMultipleNotYesOrNo() {
         initLM2();
-		String input = ("maybe\nyes\n4\n4\n");
+		String input = ("maybe\nyes\n4 4");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
         assertTrue(lm2.rateSong("Lullaby"));
