@@ -68,19 +68,13 @@ class SongTest {
 	
 	@Test
 	void rateSongTest() {
-		String input = ("5");
-		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
-        	System.setIn(testIn);
-        song1.rateSong();
+        song1.rateSong(5);
         assertTrue(song1.getFavorite());
 	}
 	
 	@Test
-	void rateSongInvalidInputTest() {
-		String input = ("0\n1");
-		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
-        	System.setIn(testIn);
-        song1.rateSong();
+	void rateSongNotFavorite() {
+        song1.rateSong(1);
         assertFalse(song1.getFavorite());
 	}
 	
