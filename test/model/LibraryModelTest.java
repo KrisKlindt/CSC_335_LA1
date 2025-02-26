@@ -250,7 +250,8 @@ class LibraryModelTest {
 	 
 	@Test
 	void testSearchBySongTitleMultiple() {
-		ArrayList<Song> songList = lm.searchSongByTitle("Lullaby");
+		initLM2();
+		ArrayList<Song> songList = lm2.searchSongByTitle("Lullaby");
 		assertTrue(songList.size() == 2);
 		assertEquals(songList.get(0).getTitle(), "Lullaby");
 		assertEquals(songList.get(1).getTitle(), "Lullaby");
@@ -489,7 +490,7 @@ class LibraryModelTest {
 		String input = ("no\nLaufey\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.favoriteSong("Lullaby"));
+        assertFalse(lm2.rateSong("Lullaby"));
 	}
 	
 	@Test
@@ -498,7 +499,7 @@ class LibraryModelTest {
 		String input = ("maybe\nyes\n4\n4\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.favoriteSong("Lullaby"));
+        assertTrue(lm2.rateSong("Lullaby"));
 	}
 	
 	@Test

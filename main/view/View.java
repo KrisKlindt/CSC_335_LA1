@@ -8,7 +8,7 @@ public class View {
 		LibraryModel library = new LibraryModel();
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("Welcome User!\n This is your music library where you can add songs and Albums that are available within our store!");
+		System.out.println("Welcome User!\nThis is your music library where you can add songs and Albums that are available within our store!");
 		int command = 0;
 		while (command < 18) {
 			System.out.println("Here are the features available to you.");
@@ -39,7 +39,7 @@ public class View {
 			}
 			if (command == 1) {
 				String pName = scanner.nextLine();
-				library.addAlbum(pName);
+				library.createPlayList(pName);
 			}
 			else if (command == 2) {
 				String sTitle = scanner.nextLine();
@@ -47,11 +47,11 @@ public class View {
 			}
 			else if (command == 3) {
 				String albName = scanner.nextLine();
-				library.searchPlayList(albName);
+				library.addAlbum(albName);
 			}
 			else if (command == 4) {
 				String pName = scanner.nextLine();
-				library.addAlbum(pName);
+				library.searchPlayList(pName);
 			}
 			else if (command == 5) {
 				System.out.println("Please put in the playlist you'd like to add to: ");
@@ -63,7 +63,7 @@ public class View {
 			else if (command == 6) {
 				System.out.println("Please put in the playlist you'd like to remove from: ");
 				String pName = scanner.nextLine();
-				System.out.println("Pkease put in the name of the song you'd like to remove: ");
+				System.out.println("Please put in the name of the song you'd like to remove: ");
 				String sTitle = scanner.nextLine();
 				library.removeSongFromPlayList(pName, sTitle);
 			}
