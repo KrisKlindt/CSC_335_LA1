@@ -585,7 +585,7 @@ public class LibraryModel {
 		return false;
 	}
 	
-	public boolean rateSong(String title) {
+	public boolean rateSong(String title, int rating) {
 		Scanner scanner = new Scanner(System.in);
 		ArrayList<Song> songList = new ArrayList<Song>();
 		
@@ -602,7 +602,7 @@ public class LibraryModel {
 		}
 		
 		else if (songList.size() == 1){
-			songList.get(0).rateSong();
+			songList.get(0).rateSong(rating);
 			scanner.close();
 			return true;
 		}
@@ -623,7 +623,7 @@ public class LibraryModel {
 		    		for (Song s: songList) {
 		    			System.out.println("Song to be rated: ");
 		    			s.printAllDetails();
-						s.rateSong();
+						s.rateSong(rating);
 					}
 		    		System.out.println("All songs rated");
 		    		count++;
@@ -637,7 +637,7 @@ public class LibraryModel {
 		    		boolean f = false;
 		    		for (Song s: songList) {
 		    			if(s.getArtist().equalsIgnoreCase(artistName)){
-		    				s.rateSong();
+		    				s.rateSong(rating);
 		    				System.out.println("Song rated");
 		    				f = true;
 		    				scanner.close();
