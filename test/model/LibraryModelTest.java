@@ -61,7 +61,7 @@ class LibraryModelTest {
 	void testAddSongSingle() {
 		lm.addSong("Set Fire To The Rain");
 		assertTrue(lm.getSongTitles().size() == 1);
-		assertEquals(lm.getSongTitles().get(0), "Set Fire To The Rain");
+		assertEquals(lm.getSongTitles().get(0), "Set Fire to the Rain");
 	}
 	
 	@Test
@@ -439,7 +439,7 @@ class LibraryModelTest {
 		lm.addSong("mis ojos");
 		lm.favoriteSong("rolling in the deep");
 		assertTrue(lm.getFavoriteSongs().size() == 1);
-		assertEquals(lm.getFavoriteSongs().get(0), "Rolling in the deep");
+		assertEquals(lm.getFavoriteSongs().get(0), "Rolling in the Deep");
 		lm.favoriteSong("mis ojos");
 		assertTrue(lm.getFavoriteSongs().size() == 2);
 		assertEquals(lm.getFavoriteSongs().get(1), "Mis Ojos");
