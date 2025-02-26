@@ -31,17 +31,9 @@ public class Song {
     	return favorite;
     }
     
-    public void rateSong() {
-    	System.out.println("Please choose a rating 1 through 5.");
-    	Scanner scanner = new Scanner(System.in);
-    	int userRating = scanner.nextInt();
-    	while (userRating < 1 || userRating > 5) {
-    		System.out.println("Invalid input. Please choose a rating 1 through 5.");
-        	userRating = scanner.nextInt();
-    	}
-    	scanner.close();
-    	this.rating = userRating;
-    	this.favorite = (userRating == 5);
+        public void rateSong(int rating) {
+    	this.rating = rating;
+    	this.favorite = (rating == 5);
     }
     
     public void markAsFavorite() {
