@@ -33,11 +33,7 @@ public class View {
 			System.out.println("Please enter the integer of the command you'd like to use: ");
 			System.out.println("Or enter a negative integer to exit");
 			
-			try {
-				command = scanner.nextInt();
-	        } catch (java.util.InputMismatchException e) {
-	            System.out.println("Invalid input. Please choose an integer 1 - 17");
-	        }
+			command = getValidIntegerInput(scanner);
 			
 			if (command < 0) {
 				break;
@@ -212,4 +208,12 @@ public class View {
 			return false;
 		}
 	}
+	
+	private static int getValidIntegerInput(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer 1 - 17.");
+            scanner.next();
+        }
+        return scanner.nextInt();
+    }
 }
