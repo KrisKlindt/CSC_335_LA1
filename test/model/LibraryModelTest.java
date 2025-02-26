@@ -194,33 +194,37 @@ class LibraryModelTest {
 	
 	@Test
 	void testRemoveSongFromPlayListMultipleYes() {
-		String input = ("yes\n");
+		String input = ("yes\nyes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
 		assertTrue(lm2.removeSongFromPlayList("Sad", "Lullaby"));
 	}
 	
 	@Test
 	void testRemoveSongFromPlayListMultipleNo() {
-		String input = ("no\nOneRepublic\n");
+		String input = ("yes\nno\nOneRepublic\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
 		assertTrue(lm2.removeSongFromPlayList("Sad", "Lullaby"));
 	}
 	
 	@Test
 	void testRemoveSongFromPlayListMultipleNoInvalidArtist() {
-		String input = ("no\nLaufey\n");
+		String input = ("yes\nno\nLaufey\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
 		assertFalse(lm2.removeSongFromPlayList("Sad", "Lullaby"));
 	}
 	
 	@Test
 	void testRemoveSongFromPlayListMultipleNotYesOrNo() {
-		String input = ("maybe\nyes\n");
+		String input = ("yes\nmaybe\nyes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
 		assertTrue(lm2.removeSongFromPlayList("Sad", "Lullaby"));
 	}
 	
@@ -387,33 +391,37 @@ class LibraryModelTest {
 	
 	@Test
 	void testFavoriteSongMultipleYes() {
-		String input = ("yes\n");
+		String input = ("yes\nyes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
 	
 	@Test
 	void testFavoriteSongMultipleNo() {
-		String input = ("no\nOneRepublic\n");
+		String input = ("yes\nno\nOneRepublic\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
 	
 	@Test
 	void testFavoriteSongMultipleNoInvalidArtist() {
-		String input = ("no\nLaufey\n");
+		String input = ("yes\nno\nLaufey\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertFalse(lm2.favoriteSong("Lullaby"));
 	}
 	
 	@Test
 	void testFavoriteSongMultipleNotYesOrNo() {
-		String input = ("maybe\nyes\n");
+		String input = ("yes\nmaybe\nyes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
 	
@@ -460,25 +468,28 @@ class LibraryModelTest {
 	
 	@Test
 	void testRateSongMultipleNo() {
-		String input = ("no\nOneRepublic\n4\n");
+		String input = ("yes\nno\nOneRepublic\n4\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
 	
 	@Test
 	void testRateSongMultipleNoInvalidArtist() {
-		String input = ("no\nLaufey\n");
+		String input = ("yes\nno\nLaufey\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
 	
 	@Test
 	void testRateSongMultipleNotYesOrNo() {
-		String input = ("maybe\nyes\n4\n4\n");
+		String input = ("yes\nmaybe\nyes\n4\n4\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
+        lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
 }
