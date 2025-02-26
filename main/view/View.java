@@ -33,8 +33,11 @@ public class View {
 			System.out.println("Please enter the integer of the command you'd like to use: ");
 			System.out.println("Or enter a negative integer to exit");
 			
-			command = scanner.nextInt();
-			scanner.nextLine();
+			try {
+				command = scanner.nextInt();
+	        } catch (java.util.InputMismatchException e) {
+	            System.out.println("Invalid input. Please choose an integer 1 - 17");
+	        }
 			
 			if (command < 0) {
 				break;
@@ -43,21 +46,33 @@ public class View {
 				System.out.println("What would you like to call this playlist?");
 				String pName = scanner.nextLine();
 				library.createPlayList(pName);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 2) {
 				System.out.println("What song would you like to add?");
 				String sTitle = scanner.nextLine();
 				library.addSong(sTitle);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 3) {
 				System.out.println("What album would you like to add?");
 				String albName = scanner.nextLine();
 				library.addAlbum(albName);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 4) {
 				System.out.println("What playlist would you like to search for?");
 				String pName = scanner.nextLine();
 				library.searchPlayList(pName);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 5) {
 				System.out.println("Please put in the playlist you'd like to add to: ");
@@ -65,6 +80,9 @@ public class View {
 				System.out.println("Please put in the name of the song you'd like to add: ");
 				String sTitle = scanner.nextLine();
 				library.addSongToPlayList(pName, sTitle);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 6) {
 				System.out.println("Please put in the playlist you'd like to remove from: ");
@@ -72,51 +90,94 @@ public class View {
 				System.out.println("Please put in the name of the song you'd like to remove: ");
 				String sTitle = scanner.nextLine();
 				library.removeSongFromPlayList(pName, sTitle);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 7) {
 				System.out.println("What song would you like to search for? ");
 				String sTitle = scanner.nextLine();
 				library.mS_SearchSongByTitle(sTitle);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 8) {
 				System.out.println("What artist would you like to search for? ");
 				String artist = scanner.nextLine();
 				library.mS_SearchSongByArtist(artist);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 9) {
 				System.out.println("Please put in the name of the album you'd like to search for: ");
 				String albTitle = scanner.nextLine();
 				library.mS_SearchAlbumByTitle(albTitle);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 10) {
 				System.out.println("Which artist's album would you like to search for? ");
 				String albArtist = scanner.nextLine();
 				library.mS_SearchAlbumByArtist(albArtist);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 11) {
-				System.out.println("What's the title of the song would you like to favorite? ");
+				System.out.println("What's the title of the song you would like to favorite? ");
 				String sTitle = scanner.nextLine();
 				library.favoriteSong(sTitle);
+				if(!(exit())) {
+					break;
 				}
+			}
 			else if (command == 12) {
 				System.out.println("What's the title of the song you'd like to rate? ");
 				String sTitle = scanner.nextLine();
-				library.rateSong(sTitle);
+				System.out.println("What rating would you like to give it? (Integer number 1-5)");
+				int rating = scanner.nextInt();
+				library.rateSong(sTitle, rating);
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 13) {
+				System.out.println("Here are the song titles in your library: ");
 				library.getSongTitles();
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 14) {
+				System.out.println("Here are the artists in your library: ");
 				library.getArtists();
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 15) {
+				System.out.println("Here are the album titles in your library: ");
 				library.getAlbumTitles();
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 16) {
+				System.out.println("Here are the playlists in your library: ");
 				library.getPlayLists();
+				if(!(exit())) {
+					break;
+				}
 			}
 			else if (command == 17) {
+				System.out.println("Here are the favorite song titles in your library: ");
 				library.getFavoriteSongs();
+				if(!(exit())) {
+					break;
+				}
 			}
 			else {
 				System.out.println("Invalid input. Please choose an integer 1 - 17");
@@ -124,5 +185,31 @@ public class View {
 		}
 		System.out.println("Thank you for using our library!");
 		scanner.close();
+	}
+	
+	private static boolean exit() {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Would you like to go back to the main menu? (yes or no)");
+		
+		String answer = scanner.nextLine();
+		
+		while(!(answer.equalsIgnoreCase("yes")) || !(answer.equalsIgnoreCase("no"))) {
+			if (answer.equalsIgnoreCase("yes")) {
+				break;
+			}
+			else if (answer.equalsIgnoreCase("no")) {
+				break;
+			}
+			else {
+				System.out.println("Please type yes or no");
+			}
+		}
+		if (answer.equalsIgnoreCase("yes")) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
