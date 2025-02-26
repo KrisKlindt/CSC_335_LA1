@@ -492,4 +492,24 @@ class LibraryModelTest {
         lm2.addSong("Lullaby");
         assertTrue(lm2.favoriteSong("Lullaby"));
 	}
+	
+	@Test
+	void testMSSearchSongByTitle() {
+		assertTrue(lm.mS_SearchSongByTitle("rolling in the deep").size() == 1);
+	}
+	
+	@Test
+	void testMSSearchSongByArtist() {
+		assertTrue(lm.searchSongByArtist("Mana").size() == 12);
+	}
+	
+	@Test
+	void testMSSearchAlbumByTitle() {
+		assertTrue(lm.searchAlbumByTitle("19").size() == 1);
+	}
+	
+	@Test
+	void testMSSearchAlbumByArtist() {
+		assertTrue(lm.mS_SearchAlbumByArtist("Adele").size() == 2);
+	}
 }
