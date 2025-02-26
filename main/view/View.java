@@ -34,22 +34,28 @@ public class View {
 			System.out.println("Or enter a negative integer to exit");
 			
 			command = scanner.nextInt();
+			scanner.nextLine();
+			
 			if (command < 0) {
 				break;
 			}
 			if (command == 1) {
+				System.out.println("What would you like to call this playlist?");
 				String pName = scanner.nextLine();
 				library.createPlayList(pName);
 			}
 			else if (command == 2) {
+				System.out.println("What song would you like to add?");
 				String sTitle = scanner.nextLine();
 				library.addSong(sTitle);
 			}
 			else if (command == 3) {
+				System.out.println("What album would you like to add?");
 				String albName = scanner.nextLine();
 				library.addAlbum(albName);
 			}
 			else if (command == 4) {
+				System.out.println("What playlist would you like to search for?");
 				String pName = scanner.nextLine();
 				library.searchPlayList(pName);
 			}
@@ -117,5 +123,6 @@ public class View {
 			}
 		}
 		System.out.println("Thank you for using our library!");
+		scanner.close();
 	}
 }
