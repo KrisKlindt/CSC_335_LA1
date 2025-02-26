@@ -457,31 +457,31 @@ class LibraryModelTest {
 	@Test
 	void testRateSongNotInLibrary() {
 		lm.addSong("mis ojos");
-		assertFalse(lm.rateSong("rolling in the deep"));
+		assertFalse(lm.rateSong("rolling in the deep", 4));
 	}
 	
 	@Test
 	void testRateSong() {
 		lm.addSong("Mis ojos");
-		assertTrue(lm.rateSong("mis Ojos"));
+		assertTrue(lm.rateSong("mis Ojos", 3));
 	}
 	
 	@Test
 	void testRateSongMultipleYes() {
 		initLM2();
-		String input = ("yes\n4 4");
+		String input = ("yes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.rateSong("Lullaby"));
+        assertTrue(lm2.rateSong("Lullaby", 4));
 	}
 	
 	@Test
 	void testRateSongMultipleNo() {
 		initLM2();
-		String input = ("no\nOneRepublic\n4");
+		String input = ("no\nOneRepublic\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.rateSong("Lullaby"));
+        assertTrue(lm2.rateSong("Lullaby", 4));
 	}
 	
 	@Test
@@ -490,16 +490,16 @@ class LibraryModelTest {
 		String input = ("no\nLaufey\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertFalse(lm2.rateSong("Lullaby"));
+        assertFalse(lm2.rateSong("Lullaby", 4));
 	}
 	
 	@Test
 	void testRateSongMultipleNotYesOrNo() {
         initLM2();
-		String input = ("maybe\nyes\n4 4");
+		String input = ("maybe\nyes\n");
 		ByteArrayInputStream testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
-        assertTrue(lm2.rateSong("Lullaby"));
+        assertTrue(lm2.rateSong("Lullaby", 4));
 	}
 	
 	@Test
