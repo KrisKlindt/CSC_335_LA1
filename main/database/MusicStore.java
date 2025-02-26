@@ -144,7 +144,7 @@ public class MusicStore {
 				System.out.println("This album artist is not in the music store");
 			}
 			else {
-				for (Album alb : albums) {
+				for (Album alb : albumList) {
 					alb.printAlbumDetails();
 					System.out.println(); // so there is a space between each album
 				}

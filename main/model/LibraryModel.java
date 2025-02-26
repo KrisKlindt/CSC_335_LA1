@@ -31,6 +31,7 @@ public class LibraryModel {
 		if (flag) {
 			PlayList playlist = new PlayList(title);
 			playLists.add(playlist);
+			System.out.println("PlayList added successfully");
 		}
 	}
 	

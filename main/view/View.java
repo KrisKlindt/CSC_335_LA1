@@ -62,7 +62,7 @@ public class View {
 			else if (command == 5) {
 				System.out.println("Please put in the playlist you'd like to add to: ");
 				String pName = scanner.nextLine();
-				System.out.println("Pkease put in the name of the song you'd like to add: ");
+				System.out.println("Please put in the name of the song you'd like to add: ");
 				String sTitle = scanner.nextLine();
 				library.addSongToPlayList(pName, sTitle);
 			}
@@ -76,22 +76,22 @@ public class View {
 			else if (command == 7) {
 				System.out.println("What song would you like to search for? ");
 				String sTitle = scanner.nextLine();
-				library.searchSongByTitle(sTitle);
+				library.mS_SearchSongByTitle(sTitle);
 			}
 			else if (command == 8) {
 				System.out.println("What artist would you like to search for? ");
 				String artist = scanner.nextLine();
-				library.searchSongByArtist(artist);
+				library.mS_SearchSongByArtist(artist);
 			}
 			else if (command == 9) {
 				System.out.println("Please put in the name of the album you'd like to search for: ");
 				String albTitle = scanner.nextLine();
-				library.searchAlbumByTitle(albTitle);
+				library.mS_SearchAlbumByTitle(albTitle);
 			}
 			else if (command == 10) {
 				System.out.println("Which artist's album would you like to search for? ");
 				String albArtist = scanner.nextLine();
-				library.searchAlbumByArtist(albArtist);
+				library.mS_SearchAlbumByArtist(albArtist);
 			}
 			else if (command == 11) {
 				System.out.println("What's the title of the song would you like to favorite? ");
