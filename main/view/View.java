@@ -178,6 +178,8 @@ public class View {
 			}
 			else {
 				System.out.println("Invalid input. Please choose an integer 1 - 17");
+				System.out.println();
+				command = 0;
 			}
 		}
 		System.out.println("Thank you for using our library!");
